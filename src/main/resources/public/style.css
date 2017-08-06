@@ -1,0 +1,22 @@
+.answered {
+    background: #55FF55;
+    width: 100%;
+    height: 100%;
+}
+
+.not_answered {
+    background: #EEEEEE;
+}
+
+.info {
+    width: 25%;
+    float: left;
+}
+
+.link {
+    max-width: 25%;
+}
+
+.date {
+    min-width: 80px;
+}

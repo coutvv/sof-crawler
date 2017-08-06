@@ -6,10 +6,12 @@ app.controller('sofCtrl', function($scope, $http) {
 
     $scope.page = 1;
     $scope.hasMoreResults = false;
+    $scope.sof_title = "";
 
     $scope.search = function() {
         $scope.page = 1;
         var more = "&page=" + $scope.page;
+
         $http.get(url + $scope.sof_title + more)
              .then(function(response) {
                     var data = response.data;
@@ -25,16 +27,15 @@ app.controller('sofCtrl', function($scope, $http) {
     }
 
     $scope.moreResults = function() {
+        $scope.page++;
         var more = "&page=" + $scope.page;
         $http.get(url + $scope.sof_title + more)
                      .then(function(response) {
                             var data = response.data;
-//                            $scope.items.concat(data.items);
                             data.items.forEach(function(item) {
                                 $scope.items.push(item);
                             });
                             console.log($scope.items);
-                            $scope.page++;
                             $scope.hasMoreResults = data.has_more;
                      });
     }

@@ -18,7 +18,7 @@ import java.io.IOException;
 @RestController
 public class SOFCrawlerController {
 
-    private final String apiUrl = "http://api.stackexchange.co/2.2/search?order=desc&sort=activity&site=stackoverflow&intitle=%s&page=%d";
+    private final String apiUrl = "http://api.stackexchange.com/2.2/search?order=desc&sort=activity&site=stackoverflow&intitle=%s&page=%d";
 
     private final HttpClient client = HttpClientBuilder.create().build();
 
@@ -33,9 +33,7 @@ public class SOFCrawlerController {
 
         System.out.println("Response Code : "
                 + response.getStatusLine().getStatusCode());
-
-        String result = EntityUtils.toString(response.getEntity());
-
+        String result = EntityUtils.toString(response.getEntity(), "UTF-8");
         return result;
     }
 
